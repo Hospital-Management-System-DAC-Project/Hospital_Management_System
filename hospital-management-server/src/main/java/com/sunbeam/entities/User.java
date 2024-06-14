@@ -33,7 +33,7 @@ public class User implements UserDetails {
 //	+---------+------------+------------+-------------------+----------+------------+------------+
 //	| user_userId | first_name | last_name  | email             | password | role       | cell_no    |
 //	+---------+------------+------------+-------------------+----------+------------+------------+
-//	|       1 | rushikesh     | sakharkar   | rushi@gmail.com  | 1234     | admin      | 9765007689 |
+//	|       1 | rushi     | sakharkar   | rushi@gmail.com  | 1234     | admin      | 9765007689  |
 //	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -93,10 +93,11 @@ public class User implements UserDetails {
 		this.id = id;
 		this.firstName = firstName;
 	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> grantedAuthorities=new ArrayList<GrantedAuthority>();
-		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+this.getRole().toUpperCase()));
+		List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + this.getRole().toUpperCase()));
 
 		return grantedAuthorities;
 		

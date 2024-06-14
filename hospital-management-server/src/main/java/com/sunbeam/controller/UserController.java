@@ -25,7 +25,8 @@ import com.sunbeam.spring_security.UserDetailsService;
 public class UserController {
 	@Autowired
 	UserServices  services;
-	
+	@Autowired
+    private JWTUtility jwtUtility;
 
     @Autowired
     private AuthenticationManager authenticationManager;

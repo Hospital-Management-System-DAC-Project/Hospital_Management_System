@@ -25,7 +25,7 @@ public class EmployeeController {
 	@Autowired
 	EmployeeServices eServices;
 
-	// ***************get mapping to get all
+	// *********************************get mapping to get all
 	// employees****************************
 	
 	@GetMapping("/getAllEmployees")

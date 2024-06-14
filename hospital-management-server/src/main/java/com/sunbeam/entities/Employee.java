@@ -23,37 +23,32 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.ToString.Exclude;
 
-@Entity
-@Table(name = "employees")
-@Getter
-@Setter
-@ToString
-@JsonInclude(value = Include.NON_NULL)
+@Entity @Table(name = "employees")@Getter @Setter @ToString @JsonInclude(value = Include.NON_NULL)
 public class Employee {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dob;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
-
+	
 	@Exclude
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name ="user_id" )
 	private User user;
-
+	
 	private double salary;
-
+	
 	@Exclude
-	@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "employee",cascade = CascadeType.ALL)
 	private Doctor doctor;
-
+	
+	
 	public void addDoctor(Doctor d) {
-		doctor = d;
+		doctor=d;
 		doctor.setEmployee(this);
 	}
 
@@ -70,6 +65,7 @@ public class Employee {
 		this.user.setEmployee(this);
 		this.salary = salary;
 	}
+	
 
 	public Employee(Date dob, Date hireDate, double salary) {
 		super();
@@ -77,5 +73,10 @@ public class Employee {
 		this.hireDate = hireDate;
 		this.salary = salary;
 	}
+
+	
+
+	
+	
 
 }

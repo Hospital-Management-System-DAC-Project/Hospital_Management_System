@@ -30,13 +30,13 @@ public class Patient {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	//------connection to user -------------------------------
+	//---------------------------------------------connection to user 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name ="user_id" )
 	private User user;
 	
 	
-	//------ ward table connection----------
+	//--------------------------------------------connection to ward table
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name ="ward_id" )
@@ -44,11 +44,11 @@ public class Patient {
 	
 	
 	
-	//-----doctor table connection-----------
+	//--------------------------------------------connection to doctor table
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name ="doctor_id" )
 	private Doctor doctor;
-	//-----doctor visits table connection-------
+	//-------------------------------------------connection to doctor visits table
 	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
 	private List<DoctorVisit> visits;
 	
@@ -68,12 +68,13 @@ public class Patient {
 	@Exclude
 	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
 	private List<MedicineAssigned> medicines; 
-//----adding patient to the doctor visit list--------------
+//-------------------------------------adding patient to the doctor visit list
 	public void addVisit(DoctorVisit visit) {
 		visit.setPatient(this);
 		visits.add(visit);
 	}
 	
+	//*********************testing: add all to add into db
 	public Patient(User user, Ward ward, Doctor doctor) {
 		super();
 		this.user = user;

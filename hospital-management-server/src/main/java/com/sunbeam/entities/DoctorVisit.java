@@ -13,22 +13,17 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.ToString.Exclude;
 
-@Entity
-@Table(name = "doctor_visits")
-@Data
+@Entity@Table(name = "doctor_visits")@Data
 public class DoctorVisit {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Exclude
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "pat_id")
+	@ManyToOne(cascade = CascadeType.PERSIST)@JoinColumn(name = "pat_id")
 	private Patient patient;
-
+	
 	@Exclude
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "doctor_id")
+	@ManyToOne(cascade = CascadeType.PERSIST)@JoinColumn(name = "doctor_id")
 	private Doctor doctor;
 	private int visits;
 }

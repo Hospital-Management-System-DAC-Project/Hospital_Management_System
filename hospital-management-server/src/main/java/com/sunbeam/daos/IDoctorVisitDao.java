@@ -10,12 +10,12 @@ import com.sunbeam.services.DoctorVisitsServices;
 
 public interface IDoctorVisitDao extends JpaRepository<DoctorVisit, Integer> {
 	@Modifying
-	@Query(value = "insert into doctor_visits values (:id, :pat_id, :doctor_id, :visits)", nativeQuery = true)
-	int insertIntoDoctorVisitsTable(@Param("id") int id, @Param("pat_id") int patId, @Param("doctor_id") int doctorId,
-			@Param("visits") int visits);
-	// to increse visit count
-
-	@Query(value = "select * from doctor_visits where pat_id= :patId and doctor_id= :doctorId", nativeQuery = true)
-	DoctorVisit getVisitsByPatIdAndDoctorId(@Param("patId") int patId, @Param("doctorId") int doctorId);
+	@Query(value = "insert into doctor_visits values (:id, :pat_id, :doctor_id, :visits)",nativeQuery = true)
+	int insertIntoDoctorVisitsTable( @Param("id")int id,@Param("pat_id")int patId,@Param("doctor_id")int doctorId,@Param("visits")int visits);
+	//to increse visit count
+	
+	@Query(value="select * from doctor_visits where pat_id= :patId and doctor_id= :doctorId",nativeQuery = true)
+	DoctorVisit getVisitsByPatIdAndDoctorId(@Param("patId")int patId,@Param("doctorId")int doctorId);
+	
 
 }
